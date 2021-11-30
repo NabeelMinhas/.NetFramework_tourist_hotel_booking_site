@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="assainmentModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="admin_login">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="username" Type="varchar" MaxLength="100" />
+    <Property Name="password" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="hotels">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="address" Type="varchar" MaxLength="200" />
+    <Property Name="imageurl" Type="varchar" MaxLength="200" />
+    <Property Name="h_placeid" Type="varchar" MaxLength="50" />
+    <Property Name="Description" Type="varchar" MaxLength="300" />
+    <Property Name="title" Type="varchar" MaxLength="300" />
+    <Property Name="no_of_rooms" Type="varchar" MaxLength="300" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="message">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="varchar" MaxLength="50" Nullable="false" />
+    <Property Name="email" Type="varchar" MaxLength="100" Nullable="false" />
+    <Property Name="sms" Type="varchar" MaxLength="1000" Nullable="false" />
+    <Property Name="phone_no" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="orders">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="phone_no_1" Type="varchar" MaxLength="12" />
+    <Property Name="phone_no_2" Type="varchar" MaxLength="12" />
+    <Property Name="email_address" Type="varchar" MaxLength="100" />
+    <Property Name="date" Type="varchar" MaxLength="50" />
+    <Property Name="cnic" Type="varchar" MaxLength="20" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="no_of_days" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="orders_complete">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="phone_no_1" Type="varchar" MaxLength="12" />
+    <Property Name="phone_no_2" Type="varchar" MaxLength="12" />
+    <Property Name="email_address" Type="varchar" MaxLength="100" />
+    <Property Name="date" Type="varchar" MaxLength="50" />
+    <Property Name="cnic" Type="varchar" MaxLength="20" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="no_of_days" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="price" Type="int" />
+  </EntityType>
+  <EntityType Name="orders_inpregress">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="phone_no_1" Type="varchar" MaxLength="12" />
+    <Property Name="phone_no_2" Type="varchar" MaxLength="12" />
+    <Property Name="email_address" Type="varchar" MaxLength="100" />
+    <Property Name="date" Type="varchar" MaxLength="50" />
+    <Property Name="cnic" Type="varchar" MaxLength="20" />
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="no_of_days" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="50" />
+    <Property Name="price" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="place">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+    <Property Name="description" Type="varchar" MaxLength="500" />
+    <Property Name="imageurl" Type="varchar" MaxLength="200" />
+    <Property Name="placeid" Type="varchar" MaxLength="50" />
+    <Property Name="address" Type="varchar" MaxLength="300" />
+  </EntityType>
+  <EntityType Name="recycle_bin">
+    <Key>
+      <PropertyRef Name="id" />
+    </Key>
+    <Property Name="id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="first_name" Type="varchar" MaxLength="50" />
+    <Property Name="last_name" Type="varchar" MaxLength="50" />
+    <Property Name="phone_no_1" Type="varchar" MaxLength="50" />
+    <Property Name="phone_no_2" Type="varchar" MaxLength="50" />
+    <Property Name="email_address" Type="varchar" MaxLength="100" />
+    <Property Name="date" Type="varchar" MaxLength="30" />
+    <Property Name="cnic" Type="varchar" MaxLength="30" />
+    <Property Name="no_of_days" Type="int" />
+    <Property Name="price" Type="int" />
+    <Property Name="title" Type="varchar" MaxLength="100" />
+  </EntityType>
+  <EntityContainer Name="assainmentModelStoreContainer">
+    <EntitySet Name="admin_login" EntityType="Self.admin_login" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="hotels" EntityType="Self.hotels" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="message" EntityType="Self.message" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders" EntityType="Self.orders" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders_complete" EntityType="Self.orders_complete" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="orders_inpregress" EntityType="Self.orders_inpregress" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="place" EntityType="Self.place" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="recycle_bin" EntityType="Self.recycle_bin" Schema="dbo" store:Type="Tables" />
+  </EntityContainer>
+</Schema>

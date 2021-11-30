@@ -1,0 +1,70 @@
+﻿@model IEnumerable<themenava.Models.message>
+@{
+    Layout = null;
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/login");
+    }
+    var a = Session["userID"];
+
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>message</title>
+</head>
+<body>
+    <h1 style="text-align:center; color:red;padding-top:3rem;">Message</h1>
+    <p style="text-align:center;">
+        @Html.ActionLink("Go Back", "Index", "dashboard")
+    </p>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.sms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.phone_no)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.congratulate_message)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.sms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.phone_no)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.congratulate_message)
+                </td>
+                <td>
+                    <a href="@Url.Action("delete","dashboard")">Delete</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</body>
+</html>

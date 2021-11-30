@@ -1,0 +1,291 @@
+﻿
+@{
+    Layout = null;
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Home/login");
+    }
+    var a=Session["userID"];
+
+}
+<!DOCTYPE html>
+<html dir="ltr" lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <!-- Favicon icon -->
+    <link rel="icon" type="image/png" sizes="16x16" href="~/Content/dashboard/assets/images/favicon.png">
+    <title>Adminmart Template - The Ultimate Multipurpose admin template</title>
+    <!-- Custom CSS -->
+    <link href="~/Content/dashboard/assets/extra-libs/c3/c3.min.css" rel="stylesheet">
+    <link href="~/Content/dashboard/assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
+    <link href="~/Content/dashboard/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.css" rel="stylesheet" />
+    <!-- Custom CSS -->
+    <link href="~/Content/dashboard/dist/css/style.min.css" rel="stylesheet">
+ 
+</head>
+
+<body>
+    
+    <!-- ============================================================== -->
+    <!-- Main wrapper - style you can find in pages.scss -->
+    <!-- ============================================================== -->
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+         data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+        <!-- ============================================================== -->
+        <!-- Topbar header - style you can find in pages.scss -->
+        <!-- ============================================================== -->
+        <header class="topbar" data-navbarbg="skin6">
+            <nav class="navbar top-navbar navbar-expand-md">
+                <div class="navbar-header" data-logobg="skin6">
+                    <!-- This is for the sidebar toggle which is visible on mobile only -->
+                    <a class="nav-toggler waves-effect waves-light d-block d-md-none" href="javascript:void(0)">
+                        <i class="ti-menu ti-close"></i>
+                    </a>
+                    <!-- ============================================================== -->
+                    <!-- Logo -->
+                    <!-- ============================================================== -->
+                    <div class="navbar-brand">
+                        <!-- Logo icon -->
+                        <a href="index.html">
+                            <b class="logo-icon">
+                                <!-- Dark Logo icon -->
+                                <img src="~/Content/dashboard/assets/images/logo-icon.png" alt="homepage" class="dark-logo" />
+                                <!-- Light Logo icon -->
+                                <img src="~/Content/dashboard/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
+                            </b>
+                            <!--End Logo icon -->
+                            <!-- Logo text -->
+                            <span class="logo-text">
+                                <!-- dark Logo text -->
+                                <img src="~/Content/dashboard/assets/images/logo-text.png" alt="homepage" class="dark-logo" />
+                                <!-- Light Logo text -->
+                                <img src=".~/Content/dashboard/assets/images/logo-light-text.png" class="light-logo" alt="homepage" />
+                            </span>
+                        </a>
+                    </div>
+                    <!-- ============================================================== -->
+                    <!-- End Logo -->
+                    <!-- ============================================================== -->
+                    <!-- ============================================================== -->
+                    <!-- Toggle which is visible on mobile only -->
+                    <!-- ============================================================== -->
+                    <a class="topbartoggler d-block d-md-none waves-effect waves-light" href="javascript:void(0)"
+                       data-toggle="collapse" data-target="#navbarSupportedContent"
+                       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                        <i class="ti-more"></i>
+                    </a>
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Logo -->
+                <!-- ============================================================== -->
+
+            </nav>
+        </header>
+        <!-- ============================================================== -->
+        <!-- End Topbar header -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <aside class="left-sidebar" data-sidebarbg="skin6">
+            <!-- Sidebar scroll-->
+            <div class="scroll-sidebar" data-sidebarbg="skin6">
+                <!-- Sidebar navigation-->
+                <nav class="sidebar-nav">
+                    <ul id="sidebarnav">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="@Url.Action("message","dashboard")"
+                               aria-expanded="false">
+                                <i data-feather="home" class="feather-icon"></i><span class="hide-menu">New Messages</span>
+                            </a>
+                            <a class="sidebar-link sidebar-link" href="@Url.Action("recycle","orders")"
+                               aria-expanded="false">
+                                <i data-feather="home" class="feather-icon"></i><span class="hide-menu">Recyle Bin</span>
+                            </a>
+                        </li>
+                        <li class="list-divider"></li>
+                        <li class="nav-small-cap"><span class="hide-menu">Add</span></li>
+
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="@Url.Action("place","dashboard")"
+                               aria-expanded="false">
+                                <i data-feather="tag" class="feather-icon"></i><span class="hide-menu">
+                                    Tourist Place
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="@Url.Action("hotels","dashboard")"
+                               aria-expanded="false">
+                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu">Hotel</span>
+                            </a>
+                        </li>
+              
+
+                        <li class="list-divider"></li>
+                        <!-- **************************line divider******************************** -->
+                        <li class="nav-small-cap"><span class="hide-menu">Oders</span></li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="@Url.Action("index","orders")"
+                               aria-expanded="false">
+                                <i data-feather="tag" class="feather-icon"></i><span class="hide-menu">
+                                    New Order
+                                </span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="@Url.Action("progress","orders")"
+                               aria-expanded="false">
+                                <i data-feather="message-square" class="feather-icon"></i><span class="hide-menu">In Progress</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="@Url.Action("complete","orders")"
+                               aria-expanded="false">
+                                <i data-feather="calendar" class="feather-icon"></i><span class="hide-menu">Completed</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link sidebar-link" href="@Url.Action("logout","dashboard")"
+                               aria-expanded="false">
+                                <i data-feather="calendar" class="feather-icon"></i><span class="hide-menu" style="color:red">logout</span>
+                            </a>
+                        </li>
+                        <!-- End Sidebar scroll-->
+</aside>
+        <!-- ============================================================== -->
+        <!-- End Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+        <!-- ============================================================== -->
+        <!-- Page wrapper  -->
+        <!-- ============================================================== -->
+        <div class="page-wrapper">
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-7 align-self-center">
+                        <h3 class="page-title text-truncate text-dark font-weight-medium mb-1">Welcome @Session["userID"] To </h3>
+                        <div class="d-flex align-items-center">
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb m-0 p-0">
+                                    <li class="breadcrumb-item">
+                                        <a href="index.html">Dashboard</a>
+                                    </li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid shadow p-3 mb-5 bg-white rounded">
+                <!-- *************************************************************** -->
+                <!-- Start First Cards -->
+                <!-- *************************************************************** -->
+                <div class="card-group shadow p-3 mb-5 bg-white rounded">
+                    <div class="card border-right ">
+                        <a href='@Url.Action("index","orders")'>
+                            <div class="card-body ">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-dark mb-1 font-weight-medium">New Order</h2>
+                                            <span class="badge bg-primary font-12 text-white font-weight-medium badge-pill ml-2 d-lg-block d-md-none">Give attension</span>
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">New Clients</h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="card border-right">
+                        <a href='@Url.Action("progress","orders")'>
+                            <div class="card-body">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium">
+                                            In Progress
+                                        </h2>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">
+                                            See the status
+                                        </h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="dollar-sign"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                    </div>
+                    <div class="card border-right">
+                        <a href='@Url.Action("complete","orders")'>
+                            <div class="card-body">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-dark mb-1 font-weight-medium">Complete</h2>
+                                            <span class="badge bg-danger font-12 text-white font-weight-medium badge-pill ml-2 d-md-none d-lg-block">congratulate</span>
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Projects</h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="file-plus"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <!-- ============================================================== -->
+        <!-- End Page wrapper  -->
+        <!-- ============================================================== -->
+    </div>
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- End Wrapper -->
+    <!-- ============================================================== -->
+    <!-- All Jquery -->
+    <!-- ============================================================== -->
+    <script src="~/Content/dashboard/assets/libs/jquery/dist/jquery.min.js"></script>
+    <script src="~/Content/dashboard/assets/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script src="~/Content/dashboard/assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- apps -->
+    <!-- apps -->
+    <script src="~/Content/dashboard/dist/js/app-style-switcher.js"></script>
+    <script src="~/Content/dashboard/dist/js/feather.min.js"></script>
+    <script src="~/Content/dashboard/assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+    <script src="~/Content/dashboard/dist/js/sidebarmenu.js"></script>
+    <!--Custom JavaScript -->
+    <script src="~/Content/dashboard/dist/js/custom.min.js"></script>
+    <!--This page JavaScript -->
+    <script src="~/Content/dashboard/assets/extra-libs/c3/d3.min.js"></script>
+    <script src="~/Content/dashboard/assets/extra-libs/c3/c3.min.js"></script>
+    <script src="~/Content/dashboard/assets/libs/chartist/dist/chartist.min.js"></script>
+    <script src="~/Content/dashboard/assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+    <script src="~/Content/dashboard/assets/extra-libs/jvector/jquery-jvectormap-2.0.2.min.js"></script>
+    <script src="~/Content/dashboard/assets/extra-libs/jvector/jquery-jvectormap-world-mill-en.js"></script>
+    <script src="~/Content/dashboard/dist/js/pages/dashboards/dashboard1.min.js"></script>
+</body>
+
+</html>

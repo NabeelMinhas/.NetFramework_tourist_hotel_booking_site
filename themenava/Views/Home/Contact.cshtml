@@ -1,0 +1,135 @@
+﻿@model themenava.Models.message
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Pak-Tourist</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!--===============================================================================================-->
+    <link rel="icon" type="image/png" href="~/Content/contact us/images/icons/favicon.ico" />
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/vendor/bootstrap/css/bootstrap.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/vendor/animate/animate.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/css/util.css">
+    <link rel="stylesheet" type="text/css" href="~/Content/contact us/css/main.css">
+    <!--===============================================================================================-->
+</head>
+<body>
+
+    <div class="page-wrapper landing-page">
+        <!-- Page Body Start            -->
+        <div class="landing-home">
+            <div class="container-fluid">
+                <div class="sticky-header">
+                    <header>
+                        <nav class="navbar navbar-b navbar-trans navbar-expand-xl fixed-top nav-padding" id="sidebar-menu">
+                            <a class="navbar-brand p-0" href="#"><img class="img-fluid" src="~/Content/images/landing/glob.png" alt=""></a>
+                            <button class="navbar-toggler navabr_btn-set custom_nav" type="button" data-toggle="collapse" data-target="#navbarDefault" aria-controls="navbarDefault" aria-expanded="false" aria-label="Toggle navigation"><span></span><span></span><span></span></button>
+                            <div class="navbar-collapse justify-content-end collapse hidenav" id="navbarDefault">
+                                <ul class="navbar-nav navbar_nav_modify" id="scroll-spy">
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("index", "home")">Home</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("All_Hotel","places")">All_Hotels</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="@Url.Action("contact", "home")">Contact</a></li>
+                                    <li style="margin-right:5rem;" class="nav-item buy-btn"><a class="nav-link js-scroll nav-link" href="@Url.Action("index", "places")" target="_blank">Tourist_Places</a></li>
+                                </ul>
+                            </div>
+                        </nav>
+                    </header>
+                </div>
+            </div>
+            <!--contact us code-->
+            <div class="bg-contact100" style="background-image: url('~/Content/contact us/images/bg-01.jpg');">
+                <div class="container-contact100">
+                    <div class="wrap-contact100">
+                        <div class="contact100-pic js-tilt" data-tilt>
+                            <img src="~/Content/contact us/images/img-01.png" alt="IMG">
+                        </div>
+                        @using (Html.BeginForm("contact", "home", FormMethod.Post))
+                        {
+                            <form class="contact100-form validate-form">
+                                <span class="contact100-form-title">
+                                    Get in touch
+                                </span>
+                                <div class="flex-sb-m w-full p-t-3 p-b-24">
+                                    <label style="color:red">
+                                        @Html.DisplayFor(x => x.congratulate_message)
+                                    </label>
+                                </div>
+
+                                <div class="wrap-input100 validate-input" data-validate="Name is required">
+                                    @Html.TextBoxFor(x => x.name, new { placeholder = "Name",@class = "input100" })
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-user" aria-hidden="true"></i>
+                                    </span>
+                                    <div style="color:red;text-align:center">
+                                        @Html.ValidationMessageFor(x => x.name)
+                                    </div>
+                                </div>
+
+                                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                    @Html.TextBoxFor(x => x.email, new { placeholder = "Email", @class = "input100" })
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                    <div style="color:red;text-align:center">
+                                        @Html.ValidationMessageFor(x => x.email)
+                                    </div>
+                                </div>
+
+                                <div class="wrap-input100 validate-input" data-validate="Valid email is required: ex@abc.xyz">
+                                    @Html.TextBoxFor(x => x.phone_no, new { placeholder = "phone no", @class = "input100" })
+                                    <span class="focus-input100"></span>
+                                    <span class="symbol-input100">
+                                        <i class="fa fa-envelope" aria-hidden="true"></i>
+                                    </span>
+                                    <div style="color:red;text-align:center">
+                                        @Html.ValidationMessageFor(x => x.phone_no)
+                                    </div>
+                                </div>
+
+                                <div class="wrap-input100 validate-input" data-validate="Message is required">
+                                    @Html.TextAreaFor(x => x.sms,new { placeholder = "Message", @class ="input100"})
+                                    <span class="focus-input100"></span>
+                                    <div style="color:red;text-align:center">
+                                        @Html.ValidationMessageFor(x => x.sms)
+                                    </div>
+                                </div>
+
+                                <div class="container-contact100-form-btn">
+                                    <input type="submit" class="contact100-form-btn" value="Send" />
+                                </div>
+                            </form>
+                        }
+                    </div>
+                </div>
+            </div>
+
+
+            <script src="~/Content/login/vendor/jquery/jquery-3.2.1.min.js"></script>
+            <script src="~/Script/jquery.validate.min.js"></script>
+            <script src="~/Script/jquery.validate.unobtrusive.min.js"></script>
+
+            <!--===============================================================================================-->
+            <script src="~/Content/contact us/vendor/jquery/jquery-3.2.1.min.js"></script>
+            <!--===============================================================================================-->
+            <script src="~/Content/contact us/vendor/bootstrap/js/popper.js"></script>
+            <script src="~/Content/contact us/vendor/bootstrap/js/bootstrap.min.js"></script>
+            <!--===============================================================================================-->
+            <script src="~/Content/contact us/vendor/select2/select2.min.js"></script>
+            <!--===============================================================================================-->
+            <script src="~/Content/contact us/vendor/tilt/tilt.jquery.min.js"></script>
+            <!--===============================================================================================-->
+            <script src="~/Content/contact us/js/main.js"></script>
+</body>
+</html>
